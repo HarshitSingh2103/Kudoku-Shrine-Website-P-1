@@ -43,13 +43,21 @@ Simply locate the index.html file in the root directory and double-click it to o
 Alternative (Recommended): Use the Live Server extension in VS Code for a real-time preview.
 
 📂 Project Structure
+
 Plaintext
+
 Kudoku-Shrine-Website-P-1/
+
 ├── assets/           # Images, icons, and media files
+
 ├── css/              # Stylesheets for layouts and animations
+
 ├── js/               # JavaScript files for interactivity
+
 ├── index.html        # Main landing page
+
 └── README.md         # Project documentation
+
 🤝 Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
