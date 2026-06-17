@@ -1,0 +1,740 @@
+/* ==========================================================================
+   1. CUSTOM VARIABLE DESIGN SYSTEM (LOOF HOTELS EARTH & MOSS TONALITIES)
+   ========================================================================== */
+:root {
+  --bg-cream: #fbfbfa; /* Elegant off-white background matching reference paper tone */
+  --text-dark: #1e2220; /* Soft slate black for editorial readability */
+  --text-muted: #6e7370; /* Muted ash tone for archival notes */
+  --line-color: #dcdbd7; /* Ultra-thin line accents seen across LOOF site */
+  --accent-moss: #5a665e; /* Deep mountain moss accent */
+  --transition-elegant: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* custom-font*/
+@font-face {
+  font-family: custom-font;
+  src: url(Font/signatie/Signatie.ttf) format('truetype');
+}
+
+/* Smooth Scrolling Native Baseline */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-cream);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Adaptive Interactive Pointer Ring */
+.cursor-ring {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--accent-moss);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.4s var(--transition-elegant),
+    height 0.4s var(--transition-elegant),
+    background-color 0.4s;
+}
+
+/* ==========================================================================
+   2. FOOLPROOF SCROLL ANIMATION CONFIGURATIONS
+   ========================================================================== */
+.scroll-reveal {
+  opacity: 0.1;
+  transform: translateY(40px);
+  transition:
+    opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.is-triggered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   3. UI ELEMENT UTILITIES
+   ========================================================================== */
+.container {
+  width: 88%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.vertical-text-accent {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: "yuji mai";
+  font-size: 1.2rem;
+  letter-spacing: 0.4em;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.thin-hr {
+  border: none;
+  border-top: 0px solid var(--line-color);
+  width: 100%;
+  margin: 0;
+}
+
+.video-wrapper-block {
+  position: relative;
+  overflow: hidden;
+  background-color: #dcdbd700;
+  cursor: pointer;
+}
+
+.video-wrapper-block video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: white;
+  filter: grayscale(0.2) contrast(1.02);
+}
+
+.video-wrapper-block:hover video {
+  transform: scale(1.05);
+  filter: grayscale(0) contrast(1.05);
+}
+
+.video-wrapper-block::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.5s ease;
+}
+
+.video-wrapper-block:hover::after {
+  background: rgba(30, 34, 32, 0);
+}
+
+/* ==========================================================================
+   4. HERO ROW HEADER MECHANICS (FIXED POSITIVE STACKING CONTEXT)
+   ========================================================================== */
+.hero-layout-header {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 6%;
+  z-index: 3; /* Establishes absolute baseline root */
+}
+
+.hero-bg-video-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; /* Moved up to keep it safely above the body background layer */
+}
+
+.hero-bg-video-canvas video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-scrim-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 5%,
+    rgba(255, 255, 255, 0.034) 50%, 
+    rgba(251, 251, 250, 0.014) 100%
+  );
+  z-index: 3; /* Sits directly over the video stream */
+}
+
+.hero-title-group {
+  position: relative;
+  z-index: 2; /* Pushes text to the very top layer */
+}
+
+.hero-japanese-label {
+  font-size: 2rem;
+  letter-spacing: 0.6em;
+  color: white;
+  display: block;
+  margin-bottom: 20px;
+  font-family: "Yuji Mai",serif;
+
+}
+
+.hero-main-title {
+  font-family: custom-font;
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+  color: white;
+  text-transform: unset;
+  font-weight: 500;
+  margin-top: 30px;
+}
+
+/* ==========================================================================
+   5. SECTION A: "THE TIMELESS HOTEL" LAYOUT
+   ========================================================================== */
+.section-timeless {
+  padding: 160px 0;
+  border-top: 1px solid var(--line-color);
+}
+
+.editorial-label-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  font-family: Nunito;
+}
+
+.editorial-label-row .line-node {
+  width: 60px;
+  height: 1px;
+  background-color: var(--line-color);
+}
+
+.main-asymmetric-heading {
+  font-family: junge;
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin-bottom: 80px;
+  max-width: 800px;
+}
+
+.timeless-grid-architecture {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 0.4fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.timeless-video-primary {
+  height: 680px;
+}
+
+.timeless-description-pane {
+  padding-top: 60px;
+  position: relative;
+}
+
+.timeless-description-pane .vertical-text-accent {
+  position: absolute;
+  left: -40px;
+  top: 60px;
+}
+
+.editorial-paragraph {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 35px;
+  text-align: justify;
+  font-family: "figtree";
+  font-weight: 500;
+}
+
+.editorial-paragraph.lead-text {
+  color: var(--text-dark);
+  font-size: 1.15rem;
+  line-height: 1.9;
+  margin-bottom: 45px;
+  font-family: "figtree";
+  font-weight: 500;
+}
+
+.timeless-video-peek-right {
+  height: 380px;
+  margin-top: -120px;
+}
+
+/* ==========================================================================
+   6. SECTION B: "TIME OF LOOF" HORIZONTAL ACCENT LAYOUT
+   ========================================================================== */
+.section-axis-split {
+  padding: 120px 0;
+  background-color: #f5f4f0;
+}
+
+.axis-grid-system {
+  display: grid;
+  grid-template-columns: 0.4fr 1.6fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.axis-branding-title {
+  font-family: junge;
+  font-size: 2.6rem;
+  line-height: 1.2;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--text-dark);
+}
+
+.axis-branding-title span {
+  display: block;
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+  font-family: var(--font-sans);
+  letter-spacing: 0.1em;
+}
+
+.axis-content-right {
+  width: 100%;
+}
+
+.axis-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+
+.axis-section-subtitle {
+  font-size: 1rem;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  font-family: nunito;
+}
+
+.axis-wide-video-frame {
+  width: 100%;
+  height: 520px;
+  margin-bottom: 60px;
+}
+
+.axis-lower-asymmetric-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+/* ==========================================================================
+   7. SECTION C: "LOOF HOTELS" STAGGERED 3-COLUMN GRID
+   ========================================================================== */
+.section-showcase-carousel {
+  padding: 180px 0;
+}
+
+.showcase-center-header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.showcase-center-header span {
+  font-size: 1rem;
+  letter-spacing: 0.4em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 15px;
+  font-family: nunito;
+}
+
+.showcase-center-header h2 {
+  font-family: junge;
+  font-size: 3.2rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.staggered-three-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.showcase-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.showcase-card-wrapper.elevation-low {
+  margin-top: 0;
+}
+.showcase-card-wrapper.elevation-high {
+  margin-top: 90px;
+}
+.showcase-card-wrapper.elevation-medium {
+  margin-top: 0;
+}
+
+.showcase-video-box {
+  height: 540px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.showcase-meta-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 10px;
+}
+
+.showcase-meta-block h3 {
+  font-family: jugne;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 5px;
+}
+
+.showcase-meta-block p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  font-family: nunito;
+}
+
+.showcase-discover-link {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  border-bottom: 1px solid var(--text-dark);
+  padding-bottom: 2px;
+  margin-top: 5px;
+  font-weight: 500;
+  font-family: nunito;
+}
+
+/* ==========================================================================
+   8. SECTION D: "NEWS" MINIMALIST LIST
+   ========================================================================== */
+.section-archive-logs {
+  padding: 140px 0;
+  border-top: 1px solid var(--line-color);
+  border-bottom: 1px solid var(--line-color);
+}
+
+.logs-grid-structure {
+  display: grid;
+  grid-template-columns: 0.4fr 1.6fr;
+  gap: 60px;
+}
+
+.logs-sticky-left {
+  position: relative;
+}
+
+.logs-sticky-left .vertical-text-accent {
+  margin-bottom: 10px;
+}
+
+.logs-sticky-left h2 {
+  font-family: junge;
+  font-size: 3.2rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+}
+
+.logs-video-offset-thumbnail {
+  width: 100%;
+  height: 220px;
+  margin-top: 40px;
+}
+
+.log-row-item {
+  display: grid;
+  grid-template-columns: 0.2fr 0.3fr 0.2fr 0.3fr;
+  padding: 30px 20px;
+  border-bottom: 1px solid var(--line-color);
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.4s ease;
+}
+
+.log-row-item:first-child {
+  border-top: 1px solid var(--line-color);
+}
+
+.log-row-item:hover {
+  background-color: #f5f4f0;
+}
+
+.log-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: nunito;
+}
+
+.log-tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-moss);
+  font-weight: 500;
+  font-family: nunito;
+}
+
+.log-headline {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 100;
+  color: var(--text-dark);
+}
+
+.log-action-arrow {
+  text-align: right;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: transform 0.4s ease;
+}
+
+.log-row-item:hover .log-action-arrow {
+  transform: translateX(8px);
+  color: var(--text-dark);
+}
+
+/* ==========================================================================
+   9. SECTION E: SCIENTIFIC FIELD DATA-MATRIX TABLE
+   ========================================================================== */
+.section-matrix-table {
+  padding: 140px 0;
+  background-color: #fdfdfd;
+}
+
+.matrix-title-area {
+  max-width: 700px;
+  margin-bottom: 60px;
+}
+
+.matrix-title-area h3 {
+  font-family: junge;
+  font-size: 2.4rem;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.matrix-table-element {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.matrix-table-element th,
+.matrix-table-element td {
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--line-color);
+  font-family: nunito;
+}
+
+.matrix-table-element th {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  background-color: #f6f6f2;
+  font-family: 'figtree';
+}
+
+.matrix-table-element tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.matrix-table-element tbody tr:hover {
+  background-color: #fbfbfa;
+}
+
+.priority-dot-indicator {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.dot-critical {
+  background-color: #a66249;
+}
+.dot-monitored {
+  background-color: #c4a46e;
+}
+
+/* ==========================================================================
+   10. SECTION F: CALL TO ACTION
+   ========================================================================== */
+.section-reservation-baseline {
+  padding: 100px 0;
+  background-color: var(--bg-cream);
+}
+
+.reservation-flex-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reservation-heading-link {
+  font-family: junge;
+  font-size: 2.4rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: var(--text-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.reservation-heading-link .horizontal-stretch-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--line-color);
+}
+
+.reservation-sub-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  white-space: nowrap;
+  padding-left: 30px;
+  font-family: figtree;
+}
+
+/* ==========================================================================
+   11. EDITORIAL FOOTER BLOCK
+   ========================================================================== */
+.editorial-footer-block {
+  background-color: #161817;
+  color: #dcdbd7;
+  padding: 120px 0 60px;
+}
+
+.footer-columns-container {
+  display: grid;
+  grid-template-columns: 1.21fr 0.4fr 0.4fr;
+  gap: 80px;
+  margin-bottom: 100px;
+}
+
+.footer-brand-column h2 {
+  font-family: junge;
+  font-size: 2.2rem;
+  letter-spacing: 0.15em;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.footer-brand-column p {
+  color: #929693;
+  max-width: 400px;
+  font-size: 0.9rem;
+  font-family: figtree;
+}
+
+.footer-links-column h4 {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #818c85;
+  margin-bottom: 25px;
+  font-weight: 500;
+  font-family: figtree;
+}
+
+.footer-links-column ul {
+  list-style: none;
+}
+
+.footer-links-column li {
+  margin-bottom: 15px;
+}
+
+.footer-links-column a {
+  color: #b4b8b5;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  font-family: nunito;
+}
+
+.footer-links-column a:hover {
+  color: #fff;
+}
+
+.footer-bottom-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #727573;
+  font-family: nunito;
+}
+
+.footer-kanji-logo {
+  font-family: yuji mai;
+  font-size: 5rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================================================
+   12. RESPONSIVE MEDIA ADAPTIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .timeless-grid-architecture,
+  .staggered-three-column-grid,
+  .logs-grid-structure,
+  .footer-columns-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .timeless-video-peek-right,
+  .showcase-card-wrapper.elevation-high,
+  .showcase-card-wrapper.elevation-medium {
+    margin-top: 0;
+  }
+  .axis-grid-system,
+  .axis-lower-asymmetric-row {
+    grid-template-columns: 1fr;
+  }
+  .log-row-item {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  .log-headline {
+    grid-column: span 2;
+  }
+  .log-action-arrow {
+    display: none;
+  }
+}
