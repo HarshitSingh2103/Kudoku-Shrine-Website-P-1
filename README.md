@@ -81,7 +81,3 @@ Project Link: https://github.com/HarshitSingh2103/Kudoku-Shrine-Website-P-1
 
 
 ---
-
-### 💡 Tips for Customization:
-* **Project Structure:** If your actual folder layout looks a bit different (e.g., if your CSS/JS files are just in the root directory instead of folders), update the **📂 Project Structure** tree section to match it exactly.
-* **License:** If you haven't added a license yet, MIT is standard for open-source portfolio pieces, but you can change it to whatever you prefer!
